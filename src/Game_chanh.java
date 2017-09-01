@@ -2,8 +2,10 @@
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import static java.lang.Math.random;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +43,20 @@ public class Game_chanh extends javax.swing.JFrame {
         
         new Thread() {
 
-        @Override
+        /*@Override
         public void run() {
           //As your stream implements Closeable, it is better to use a "try-with-resources"
           try(FileInputStream fis = new FileInputStream("music.mp3")){
+            new Player(fis).play();
+          }catch(Exception e){System.out.println(e);}
+        }
+      }.start();  */
+        
+        @Override
+        public void run() {
+          //As your stream implements Closeable, it is better to use a "try-with-resources"
+          try(InputStream fis = this.getClass().getResourceAsStream("music.mp3")){
+
             new Player(fis).play();
           }catch(Exception e){System.out.println(e);}
         }

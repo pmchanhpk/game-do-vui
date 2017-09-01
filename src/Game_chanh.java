@@ -41,7 +41,8 @@ public class Game_chanh extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Game Đố Vui - Version 1.1");
         
-        new Thread() {
+ 
+       
 
         /*@Override
         public void run() {
@@ -51,17 +52,19 @@ public class Game_chanh extends javax.swing.JFrame {
           }catch(Exception e){System.out.println(e);}
         }
       }.start();  */
-        
-        @Override
-        public void run() {
-          //As your stream implements Closeable, it is better to use a "try-with-resources"
-          try(InputStream fis = this.getClass().getResourceAsStream("music.mp3")){
+        new Thread() {
+            @Override
+            public void run() {
+                //As your stream implements Closeable, it is better to use a "try-with-resources"
+                try (InputStream fis = this.getClass().getResourceAsStream("music.mp3")) {
 
-            new Player(fis).play();
-          }catch(Exception e){System.out.println(e);}
-        }
-      }.start();
-        
+                    new Player(fis).play();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }.start();
+
         try {
             setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("babelfish_2.png")));
         } catch (Exception e) {
@@ -141,8 +144,8 @@ public class Game_chanh extends javax.swing.JFrame {
         jPanel1.add(jansA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 410, 85));
 
         jQuestion.setFont(new java.awt.Font("Times New Roman", 1, 32)); // NOI18N
-        jQuestion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(jQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 910, 120));
+        jQuestion.getAccessibleContext().setAccessibleName("");
 
         jansB.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jansB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/6666.png"))); // NOI18N
@@ -192,13 +195,17 @@ public class Game_chanh extends javax.swing.JFrame {
         Question q3 = new Question("What is the only position on a football team that can be \"sacked\"?", "A. Wide recevie", "B. Tight end", "C. Center", "D. Quarterback", "D. Quarterback");
         Question q4 = new Question("Khe núi Grand Canyon nằm ở nước nào?", "A. Mỹ", "B. Anh", "C. Chi-lê", "D. Canada", "A. Mỹ");
         Question q5 = new Question("Nhà khoa học nào sau đây phát minh ra thuốc nổ?", "A. Isaac Newton", "B. Albert Einstein", "C. Alfred Nobel", "D. Nikola Tesla", "C. Alfred Nobel");
-        Question q6 = new Question("Trong Lễ Tạ ơn của người Bác Mỹ không thể hiếu món ăn nào?", "A. Thịt bê thui", "B. Thịt gà tây", "C. Thịt lợn mán", "D. Thịt ngan ré", "B. Thịt gà tây");
+        Question q6 = new Question("Trong Lễ Tạ ơn của người Bắc Mỹ không thể hiếu món ăn nào?", "A. Thịt bê thui", "B. Thịt gà tây", "C. Thịt lợn mán", "D. Thịt ngan ré", "B. Thịt gà tây");
         Question q7 = new Question("Nguyên liệu chính để bào chế vị thuốc ô mai trong y học là?", "A. Mơ", "B. Táo", "C. Trám", "D. Mận", "A. Mơ");
-        Question q8= new Question("Trụ sở của liên đoàn Bóng đá thế giới FIFA đặt tại quốc gia nào?", "A. Đan Mạch", "B. Thụy Điển", "C. Thụy Sĩ", "D. Anh", "C. Thụy Sĩ");
+        Question q8 = new Question("Trụ sở của liên đoàn Bóng đá thế giới FIFA đặt tại quốc gia nào?", "A. Đan Mạch", "B. Thụy Điển", "C. Thụy Sĩ", "D. Anh", "C. Thụy Sĩ");
         Question q9 = new Question("Hàm Nghi là vị vua của triều đại nào?", "A. Lê", "B. Nguyễn", "C. Trần", "D. Lý", "B. Nguyễn");
-        Question q10 = new Question("Quy Nhơn là thành phố thuộc tỉnh nảo?", "A. An Giang", "B. Bình Định", "C. Bạc Liêu", "D. Kiên Giang", "B. Bình Định");
+        Question q10 = new Question("Quy Nhơn là thành phố thuộc tỉnh nào?", "A. An Giang", "B. Bình Định", "C. Bạc Liêu", "D. Kiên Giang", "B. Bình Định");
         Question q11 = new Question("Nước Ý không có biên giới chung với nước nào?", "A. Áo", "B. Pháp", "C. Đức", "D. Thụy Sĩ", "C. Đức");
         Question q12 = new Question("Ai là tác giả của bức tranh \"Người đàn bà xa lạ\"?", "A. Ivan Kramskoi", "B. Van Gogh", "C. Pablo Picasso", "D. Issac Levitan", "A. Ivan Kramskoi");
+        Question q13 = new Question("Sông Seine nằm ở nước nào?", "A. Tây Ban Nha", "B. Pháp", "C. Brazil", "D. Italia", "B. Pháp");
+        Question q14 = new Question("Người Việt Nam đầu tiên bay vào vũ trụ là ai?", "A. Phạm Tuân", "B. Nguyễn Tuân", "C. Phạm Luân", "D. Nguyễn Luân", "A. Phạm Tuân");
+        //Question q15 = new Question("\"Nước non nặng một lời thề. Nước đi mãi mãi không về cùng non\" là những câu thơ của tác giả nào?","A. Tản Đà", "B. Thế Lữ", "C. Chính Hữu", "D. Hàn Mặc Tử", "A. Tản Đà");
+        Question q16 = new Question("Giải Abel là giải thưởng hàng năm dành cho lĩnh vực nào?", "A. Toán học", "B. Vật lý", "C. Hóa học", "D. Thiên văn học", "A. Toán học");
         listQues = new ArrayList<Question>();
         listQues.add(q1);
         listQues.add(q2);
@@ -212,6 +219,10 @@ public class Game_chanh extends javax.swing.JFrame {
         listQues.add(q10);
         listQues.add(q11);
         listQues.add(q12);
+        listQues.add(q13);
+        listQues.add(q14);
+        //listQues.add(q15);
+        listQues.add(q16);
 
     }
     private void jansAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansAActionPerformed
@@ -257,12 +268,13 @@ public class Game_chanh extends javax.swing.JFrame {
     private void jPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPlayActionPerformed
 
         readQues();
+        
         this.jPlay.setEnabled(false);// clock the btn
         this.jansA.setEnabled(true);
         this.jansB.setEnabled(true);
         this.jansC.setEnabled(true);
         this.jansD.setEnabled(true);
-
+        
         point = -1;
         time = new Timer(80, new LoadTime());
         load();
@@ -346,9 +358,34 @@ public class Game_chanh extends javax.swing.JFrame {
     public boolean check_result() {
 
         if (this.user_ans == cur_ques.getAnsTrue()) {
+            new Thread() {
+                @Override
+                public void run() {
+                    //As your stream implements Closeable, it is better to use a "try-with-resources"
+                    try (InputStream fis = this.getClass().getResourceAsStream("true.mp3")) {
+
+                        new Player(fis).play();
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }.start();
             return true;
+        } else {
+            new Thread() {
+                @Override
+                public void run() {
+                    //As your stream implements Closeable, it is better to use a "try-with-resources"
+                    try (InputStream fis = this.getClass().getResourceAsStream("false.mp3")) {
+
+                        new Player(fis).play();
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            }.start();
+            return false;
         }
-        return false;
 
     }
 

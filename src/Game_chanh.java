@@ -2,11 +2,17 @@
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import static java.lang.Math.random;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,11 +33,22 @@ public class Game_chanh extends javax.swing.JFrame {
 
     public String user_ans;
 
-    public Game_chanh() {
+    public Game_chanh() throws JavaLayerException {
         time_run = TIME_MAX;
 
         initComponents();
         this.setTitle("Game Đố Vui - Version 1.1");
+        
+        new Thread() {
+
+        @Override
+        public void run() {
+          //As your stream implements Closeable, it is better to use a "try-with-resources"
+          try(FileInputStream fis = new FileInputStream("music.mp3")){
+            new Player(fis).play();
+          }catch(Exception e){System.out.println(e);}
+        }
+      }.start();
         
         try {
             setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("babelfish_2.png")));
@@ -163,13 +180,26 @@ public class Game_chanh extends javax.swing.JFrame {
         Question q3 = new Question("What is the only position on a football team that can be \"sacked\"?", "A. Wide recevie", "B. Tight end", "C. Center", "D. Quarterback", "D. Quarterback");
         Question q4 = new Question("Khe núi Grand Canyon nằm ở nước nào?", "A. Mỹ", "B. Anh", "C. Chi-lê", "D. Canada", "A. Mỹ");
         Question q5 = new Question("Nhà khoa học nào sau đây phát minh ra thuốc nổ?", "A. Isaac Newton", "B. Albert Einstein", "C. Alfred Nobel", "D. Nikola Tesla", "C. Alfred Nobel");
-
+        Question q6 = new Question("Trong Lễ Tạ ơn của người Bác Mỹ không thể hiếu món ăn nào?", "A. Thịt bê thui", "B. Thịt gà tây", "C. Thịt lợn mán", "D. Thịt ngan ré", "B. Thịt gà tây");
+        Question q7 = new Question("Nguyên liệu chính để bào chế vị thuốc ô mai trong y học là?", "A. Mơ", "B. Táo", "C. Trám", "D. Mận", "A. Mơ");
+        Question q8= new Question("Trụ sở của liên đoàn Bóng đá thế giới FIFA đặt tại quốc gia nào?", "A. Đan Mạch", "B. Thụy Điển", "C. Thụy Sĩ", "D. Anh", "C. Thụy Sĩ");
+        Question q9 = new Question("Hàm Nghi là vị vua của triều đại nào?", "A. Lê", "B. Nguyễn", "C. Trần", "D. Lý", "B. Nguyễn");
+        Question q10 = new Question("Quy Nhơn là thành phố thuộc tỉnh nảo?", "A. An Giang", "B. Bình Định", "C. Bạc Liêu", "D. Kiên Giang", "B. Bình Định");
+        Question q11 = new Question("Nước Ý không có biên giới chung với nước nào?", "A. Áo", "B. Pháp", "C. Đức", "D. Thụy Sĩ", "C. Đức");
+        Question q12 = new Question("Ai là tác giả của bức tranh \"Người đàn bà xa lạ\"?", "A. Ivan Kramskoi", "B. Van Gogh", "C. Pablo Picasso", "D. Issac Levitan", "A. Ivan Kramskoi");
         listQues = new ArrayList<Question>();
         listQues.add(q1);
         listQues.add(q2);
         listQues.add(q3);
         listQues.add(q4);
         listQues.add(q5);
+        listQues.add(q6);
+        listQues.add(q7);
+        listQues.add(q8);
+        listQues.add(q9);
+        listQues.add(q10);
+        listQues.add(q11);
+        listQues.add(q12);
 
     }
     private void jansAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansAActionPerformed
@@ -222,7 +252,7 @@ public class Game_chanh extends javax.swing.JFrame {
         this.jansD.setEnabled(true);
 
         point = -1;
-        time = new Timer(50, new LoadTime());
+        time = new Timer(80, new LoadTime());
         load();
 
 
@@ -361,7 +391,11 @@ public class Game_chanh extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Game_chanh().setVisible(true);
+                try {
+                    new Game_chanh().setVisible(true);
+                } catch (JavaLayerException ex) {
+                    Logger.getLogger(Game_chanh.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

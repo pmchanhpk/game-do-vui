@@ -1,0 +1,146 @@
+[
+    {
+        "ques": "El Nino là gì?",
+        "ansA": "A. Một loại dương xỉ",
+        "ansB": "B. Một điệu nhảy",
+        "ansC": "C. Một khu rừng ở Châu Phi",
+        "ansD": "D. Một hiện tượng thời tiết",
+        "trueAns": "D. Một hiện tượng thời tiết"
+    },
+    {
+        "ques": "Loài động vật nào có 3 tim, 8 chi và máu màu xanh?",
+        "ansA": "A. Mực",
+        "ansB": "B. Bạch tuộc",
+        "ansC": "C. Hải cẩu",
+        "ansD": "D. Sư tử biển",
+        "trueAns": "B. Bạch tuộc"
+    },
+    {
+        "ques": "What is the only position on a football team that can be \"sacked\"?",
+        "ansA": "A. Wide recevie",
+        "ansB": "B. Tight end",
+        "ansC": "C. Center",
+        "ansD": "D. Quarterback",
+        "trueAns": "D. Quarterback"
+    },
+    {
+        "ques": "Sông Bến Hải và sông Thạch Hãn nằm ở tỉnh nào?",
+        "ansA": "A. Quảng Bình",
+        "ansB": "B. Quảng Ninh",
+        "ansC": "C. Quảng Trị",
+        "ansD": "D. Quảng Ngãi",
+        "trueAns": "C. Quảng Trị"
+    },
+    {
+        "ques": "Các vua Hùng đặt quốc hiệu nước ta là gì?",
+        "ansA": "A. Đại Ngu",
+        "ansB": "B. Văn Lang",
+        "ansC": "C. Âu Lạc",
+        "ansD": "D. Đại Cồ Việt",
+        "trueAns": "B. Văn Lang"
+    },
+    {
+        "ques": "Ai là tổng thống đắc cử của Mỹ (2017) ?",
+        "ansA": "A. Bush",
+        "ansB": "B. Trump",
+        "ansC": "C. Obama",
+        "ansD": "D. Jack",
+        "trueAns": "B. Trump"
+    },
+    {
+        "ques": "Khe núi Grand Canyon nằm ở nước nào?",
+        "ansA": "A. Mỹ",
+        "ansB": "B. Anh",
+        "ansC": "C. Chi-lê",
+        "ansD": "D. Canada",
+        "trueAns": "A. Mỹ"
+    },
+    {
+        "ques": "Nhà khoa học nào sau đây phát minh ra thuốc nổ?",
+        "ansA": "A. Isaac Newton",
+        "ansB": "B. Albert Einstein",
+        "ansC": "C. Alfred Nobel",
+        "ansD": "D. Nikola Tesla",
+        "trueAns": "C. Alfred Nobel"
+    },
+    {
+        "ques": "Trong Lễ Tạ ơn của người Bắc Mỹ không thể hiếu món ăn nào?",
+        "ansA": "A. Thịt bê thui",
+        "ansB": "B. Thịt gà tây",
+        "ansC": "C. Thịt lợn mán",
+        "ansD": "D. Thịt ngan ré",
+        "trueAns": "B. Thịt gà tây"
+    },
+    {
+        "ques": "Nguyên liệu chính để bào chế vị thuốc ô mai trong y học là?",
+        "ansA": "A. Mơ",
+        "ansB": "B. Táo",
+        "ansC": "C. Trám",
+        "ansD": "D. Mận",
+        "trueAns": "A. Mơ"
+    },
+    {
+        "ques": "Trụ sở của liên đoàn Bóng đá thế giới FIFA đặt tại quốc gia nào?",
+        "ansA": "A. Đan Mạch",
+        "ansB": "B. Thụy Điển",
+        "ansC": "C. Thụy Sĩ",
+        "ansD": "D. Anh",
+        "trueAns": "C. Thụy Sĩ"
+    },
+    {
+        "ques": "Hàm Nghi là vị vua của triều đại nào?",
+        "ansA": "A. Lê",
+        "ansB": "B. Nguyễn",
+        "ansC": "C. Trần",
+        "ansD": "D. Lý",
+        "trueAns": "B. Nguyễn"
+    },
+    {
+        "ques": "Quy Nhơn là thành phố thuộc tỉnh nào?",
+        "ansA": "A. An Giang",
+        "ansB": "B. Bình Định",
+        "ansC": "C. Bạc Liêu",
+        "ansD": "D. Kiên Giang",
+        "trueAns": "B. Bình Định"
+    },
+    {
+        "ques": "Nước Ý không có biên giới chung với nước nào?",
+        "ansA": "A. Áo",
+        "ansB": "B. Pháp",
+        "ansC": "C. Đức",
+        "ansD": "D. Thụy Sĩ",
+        "trueAns": "C. Đức"
+    },
+    {
+        "ques": "Ai là tác giả của bức tranh \"Người đàn bà xa lạ\"?",
+        "ansA": "A. Ivan Kramskoi",
+        "ansB": "B. Van Gogh",
+        "ansC": "C. Pablo Picasso",
+        "ansD": "D. Issac Levitan",
+        "trueAns": "A. Ivan Kramskoi"
+    },
+    {
+        "ques": "Sông Seine nằm ở nước nào?",
+        "ansA": "A. Tây Ban Nha",
+        "ansB": "B. Pháp",
+        "ansC": "C. Brazil",
+        "ansD": "D. Italia",
+        "trueAns": "B. Pháp"
+    },
+    {
+        "ques": "Người Việt Nam đầu tiên bay vào vũ trụ là ai?",
+        "ansA": "A. Phạm Tuân",
+        "ansB": "B. Nguyễn Tuân",
+        "ansC": "C. Phạm Luân",
+        "ansD": "D. Nguyễn Luân",
+        "trueAns": "A. Phạm Tuân"
+    },
+    {
+        "ques": "Giải Abel là giải thưởng hàng năm dành cho lĩnh vực nào?",
+        "ansA": "A. Toán học",
+        "ansB": "B. Vật lý",
+        "ansC": "C. Hóa học",
+        "ansD": "D. Thiên văn học",
+        "trueAns": "A. Toán học"
+    }
+]

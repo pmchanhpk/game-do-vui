@@ -9,15 +9,20 @@
  * @author ChanhPM
  */
 public class Question {
-    private String ques, ansA, ansB, ansC, ansD, ansTrue;   
-         
+
+    private String ques, ansA, ansB, ansC, ansD, trueAns;
+
+    public Question() {
+
+    }
+
     public Question(String ques, String ansA, String ansB, String ansC, String ansD, String ansTrue) {
         this.ques = ques;
         this.ansA = ansA;
         this.ansB = ansB;
         this.ansC = ansC;
         this.ansD = ansD;
-        this.ansTrue = ansTrue;
+        this.trueAns = ansTrue;
     }
 
     public String getQues() {
@@ -60,16 +65,16 @@ public class Question {
         this.ansD = ansD;
     }
 
-    public String getAnsTrue() {
-        return ansTrue;
+    public String getTrueAns() {
+        return trueAns;
     }
 
     public void setAnsTrue(String ansTrue) {
-        this.ansTrue = ansTrue;
-    }    
-    
+        this.trueAns = ansTrue;
+    }
+
     @Override
     public String toString() {
-        return "Question{" + "ques=" + ques + ", ansA=" + ansA + ", ansB=" + ansB + ", ansC=" + ansC + ", ansD=" + ansD + ", ansTrue=" + ansTrue + '}';
+        return "Question{" + "ques=" + ques + ", ansA=" + ansA + ", ansB=" + ansB + ", ansC=" + ansC + ", ansD=" + ansD + ", ansTrue=" + trueAns + '}';
     }
 }

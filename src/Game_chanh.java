@@ -39,11 +39,11 @@ public class Game_chanh extends javax.swing.JFrame {
 
     public Game_chanh() throws JavaLayerException {
         time_run = TIME_MAX;
-
         initComponents();
+        changeVisibleAll(false);
         this.setTitle("Game Đố Vui - Version 1.2");
         listImage = new ArrayList();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             listImage.add("background" + i);
         }
 
@@ -76,26 +76,29 @@ public class Game_chanh extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jName = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
         jScore = new javax.swing.JLabel();
         jPoint = new javax.swing.JLabel();
         jansC = new javax.swing.JButton();
         jPlay = new javax.swing.JButton();
-        jansA = new javax.swing.JButton();
         jQuestion = new javax.swing.JLabel();
         jansB = new javax.swing.JButton();
         jansD = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jansA = new javax.swing.JButton();
+        JExit = new javax.swing.JButton();
+        JPlaygame = new javax.swing.JButton();
+        jBackground = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jTopPlayer = new javax.swing.JMenu();
+        jTop10 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jAuthor = new javax.swing.JMenuItem();
+        jGameDoVui = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jName.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jName.setText("Phạm Minh Chánh");
-        jPanel1.add(jName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
         jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 910, 22));
 
         jScore.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -124,19 +127,9 @@ public class Game_chanh extends javax.swing.JFrame {
                 jPlayActionPerformed(evt);
             }
         });
-        jPanel1.add(jPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 490, 410, 55));
+        jPanel1.add(jPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 410, 55));
 
-        jansA.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jansA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/555.png"))); // NOI18N
-        jansA.setEnabled(false);
-        jansA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jansA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jansAActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jansA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 410, 85));
-
+        jQuestion.setBackground(new java.awt.Color(204, 204, 204));
         jQuestion.setFont(new java.awt.Font("Times New Roman", 1, 32)); // NOI18N
         jPanel1.add(jQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 910, 120));
 
@@ -162,16 +155,72 @@ public class Game_chanh extends javax.swing.JFrame {
         });
         jPanel1.add(jansD, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 380, 410, 85));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/background0.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 560));
+        jansA.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jansA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/555.png"))); // NOI18N
+        jansA.setEnabled(false);
+        jansA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jansA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jansAActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jansA, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 410, 85));
+
+        JExit.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        JExit.setText("EXIT");
+        JExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JExitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 340, 70));
+
+        JPlaygame.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        JPlaygame.setText("PLAY GAME");
+        JPlaygame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JPlaygameActionPerformed(evt);
+            }
+        });
+        jPanel1.add(JPlaygame, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 150, 340, 70));
+
+        jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/Anh_nen.jpg"))); // NOI18N
+        jPanel1.add(jBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 560));
+
+        jTopPlayer.setText("Top Player");
+
+        jTop10.setText("Top 10");
+        jTop10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTop10ActionPerformed(evt);
+            }
+        });
+        jTopPlayer.add(jTop10);
+
+        jMenuBar1.add(jTopPlayer);
+
+        jMenu2.setText("About");
+
+        jAuthor.setText("Author");
+        jAuthor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAuthorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jAuthor);
+
+        jGameDoVui.setText("Game đố vui");
+        jMenu2.add(jGameDoVui);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,13 +341,52 @@ public class Game_chanh extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jansBActionPerformed
 
-    void load() {
-        String cur_image;
+    private void JPlaygameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JPlaygameActionPerformed
+        // TODO add your handling code here:
+        jPlay.setVisible(false);
+        JExit.setVisible(false);
+        jPlay.setText("Replay");
+        JPlaygame.setVisible(false);
+        jPlayActionPerformed(evt);
+    }//GEN-LAST:event_JPlaygameActionPerformed
 
+    private void JExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JExitActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_JExitActionPerformed
+
+    private void jAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAuthorActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jAuthorActionPerformed
+
+    private void jTop10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTop10ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTop10ActionPerformed
+    public void changeVisibleAll(boolean status)
+    {
+        jPlay.setVisible(status);
+        jansA.setVisible(status);
+        jansB.setVisible(status);
+        jansC.setVisible(status);
+        jansD.setVisible(status);
+        jProgressBar1.setVisible(status);
+        jScore.setVisible(status);
+        jPoint.setVisible(status);           
+        
+    }
+    void load() {
+        
+        changeVisibleAll(true);
+        
+        
+        String cur_image;
+        
         Random rd = new Random();
-        int index_image = rd.nextInt(5);
+        int index_image = rd.nextInt(6);
         cur_image = listImage.get(index_image);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/" + cur_image + ".jpg")));
+        jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/" + cur_image + ".jpg")));
 
         point++;
         jPoint.setText(point + "");
@@ -426,14 +514,21 @@ public class Game_chanh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jName;
+    private javax.swing.JButton JExit;
+    private javax.swing.JButton JPlaygame;
+    private javax.swing.JMenuItem jAuthor;
+    private javax.swing.JLabel jBackground;
+    private javax.swing.JMenuItem jGameDoVui;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jPlay;
     private javax.swing.JLabel jPoint;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel jQuestion;
     private javax.swing.JLabel jScore;
+    private javax.swing.JMenuItem jTop10;
+    private javax.swing.JMenu jTopPlayer;
     private javax.swing.JButton jansA;
     private javax.swing.JButton jansB;
     private javax.swing.JButton jansC;

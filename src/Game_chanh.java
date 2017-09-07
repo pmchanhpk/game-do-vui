@@ -1,5 +1,6 @@
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
@@ -40,6 +43,7 @@ public class Game_chanh extends javax.swing.JFrame {
     public Game_chanh() throws JavaLayerException {
         time_run = TIME_MAX;
         initComponents();
+
         changeVisibleAll(false);
         this.setTitle("Game Đố Vui - Version 1.2");
         listImage = new ArrayList();
@@ -93,21 +97,20 @@ public class Game_chanh extends javax.swing.JFrame {
         jTop10 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jAuthor = new javax.swing.JMenuItem();
-        jGameDoVui = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 910, 22));
+        jPanel1.add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 940, 22));
 
         jScore.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jScore.setText("Score:");
-        jPanel1.add(jScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jPanel1.add(jScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jPoint.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jPoint.setText("0");
-        jPanel1.add(jPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        jPanel1.add(jPoint, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
 
         jansC.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jansC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/cat_true.png"))); // NOI18N
@@ -131,7 +134,7 @@ public class Game_chanh extends javax.swing.JFrame {
 
         jQuestion.setBackground(new java.awt.Color(204, 204, 204));
         jQuestion.setFont(new java.awt.Font("Times New Roman", 1, 32)); // NOI18N
-        jPanel1.add(jQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 910, 120));
+        jPanel1.add(jQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 115, 940, 120));
 
         jansB.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jansB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/6666.png"))); // NOI18N
@@ -201,16 +204,13 @@ public class Game_chanh extends javax.swing.JFrame {
 
         jMenu2.setText("About");
 
-        jAuthor.setText("Author");
+        jAuthor.setText("Tác giả");
         jAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jAuthorActionPerformed(evt);
             }
         });
         jMenu2.add(jAuthor);
-
-        jGameDoVui.setText("Game đố vui");
-        jMenu2.add(jGameDoVui);
 
         jMenuBar1.add(jMenu2);
 
@@ -241,7 +241,7 @@ public class Game_chanh extends javax.swing.JFrame {
         listQues = new ArrayList<>(Arrays.asList(questions));
     }
     private void jansAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansAActionPerformed
-        this.user_ans = cur_ques.getAnsA();
+        this.user_ans = jansA.getText().replace("A. ", "");
         if (check_result()) {
             time.stop();
             this.jPlay.setText("Corrected!");
@@ -261,7 +261,7 @@ public class Game_chanh extends javax.swing.JFrame {
     }//GEN-LAST:event_jansAActionPerformed
 
     private void jansCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansCActionPerformed
-        this.user_ans = cur_ques.getAnsC();
+        this.user_ans = jansC.getText().replace("C. ", "");
         if (check_result()) {
             time.stop();
             this.jPlay.setText("Corrected!");
@@ -301,8 +301,28 @@ public class Game_chanh extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPlayActionPerformed
 
+    public static List<String> Shuffle(Question q) {
+        List<String> list_answers = new ArrayList<String>();
+        list_answers.add(q.getAnsA());
+        list_answers.add(q.getAnsB());
+        list_answers.add(q.getAnsC());
+        list_answers.add(q.getAnsD());
+
+        Random r = new Random();
+        int count = list_answers.size();
+        while (count > 1) {
+            int r_index = r.nextInt(count);
+            count--;
+            String temp = list_answers.get(count);
+            list_answers.set(count, list_answers.get(r_index));
+            list_answers.set(r_index, temp);
+
+        }
+        return list_answers;
+    }
+
     private void jansDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansDActionPerformed
-        this.user_ans = cur_ques.getAnsD();
+        this.user_ans = jansD.getText().replace("D. ", "");
         if (check_result()) {
             time.stop();
             this.jPlay.setText("Corrected!");
@@ -322,7 +342,7 @@ public class Game_chanh extends javax.swing.JFrame {
     }//GEN-LAST:event_jansDActionPerformed
 
     private void jansBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansBActionPerformed
-        this.user_ans = cur_ques.getAnsB();
+        this.user_ans = jansB.getText().replace("B. ", "");
         if (check_result()) {
             time.stop();
             this.jPlay.setText("Corrected!");
@@ -348,6 +368,11 @@ public class Game_chanh extends javax.swing.JFrame {
         jPlay.setText("Replay");
         JPlaygame.setVisible(false);
         jPlayActionPerformed(evt);
+        jQuestion.setHorizontalAlignment(JLabel.CENTER);
+
+        jQuestion.setBackground(Color.getHSBColor((float) (64.62 / 360), (float) (5.31 / 100), (float) (96.08 / 100)));
+
+        jQuestion.setOpaque(true);
     }//GEN-LAST:event_JPlaygameActionPerformed
 
     private void JExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JExitActionPerformed
@@ -357,15 +382,17 @@ public class Game_chanh extends javax.swing.JFrame {
 
     private void jAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAuthorActionPerformed
         // TODO add your handling code here:
-        
+        Author_form author_form = new Author_form();
+        author_form.setVisible(true);
+
+
     }//GEN-LAST:event_jAuthorActionPerformed
 
     private void jTop10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTop10ActionPerformed
         // TODO add your handling code here:
-        
+        JOptionPane.showMessageDialog(null, "Chưa cập nhật");
     }//GEN-LAST:event_jTop10ActionPerformed
-    public void changeVisibleAll(boolean status)
-    {
+    public void changeVisibleAll(boolean status) {
         jPlay.setVisible(status);
         jansA.setVisible(status);
         jansB.setVisible(status);
@@ -373,16 +400,16 @@ public class Game_chanh extends javax.swing.JFrame {
         jansD.setVisible(status);
         jProgressBar1.setVisible(status);
         jScore.setVisible(status);
-        jPoint.setVisible(status);           
-        
+        jPoint.setVisible(status);
+
     }
+
     void load() {
-        
+
         changeVisibleAll(true);
-        
-        
+
         String cur_image;
-        
+
         Random rd = new Random();
         int index_image = rd.nextInt(6);
         cur_image = listImage.get(index_image);
@@ -407,11 +434,13 @@ public class Game_chanh extends javax.swing.JFrame {
             cur_ques = listQues.get(index_random);
             listQues.remove(index_random);
 
+            List<String> shuffled_ansList = Shuffle(cur_ques);
+
             this.jQuestion.setText(cur_ques.getQues());
-            this.jansA.setText(cur_ques.getAnsA());
-            this.jansB.setText(cur_ques.getAnsB());
-            this.jansC.setText(cur_ques.getAnsC());
-            this.jansD.setText(cur_ques.getAnsD());
+            this.jansA.setText("A. " + shuffled_ansList.get(0));
+            this.jansB.setText("B. " + shuffled_ansList.get(1));
+            this.jansC.setText("C. " + shuffled_ansList.get(2));
+            this.jansD.setText("D. " + shuffled_ansList.get(3));
 
             time_run = TIME_MAX;
             time.start();
@@ -518,7 +547,6 @@ public class Game_chanh extends javax.swing.JFrame {
     private javax.swing.JButton JPlaygame;
     private javax.swing.JMenuItem jAuthor;
     private javax.swing.JLabel jBackground;
-    private javax.swing.JMenuItem jGameDoVui;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

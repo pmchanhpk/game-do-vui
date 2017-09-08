@@ -4,10 +4,8 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,15 +37,17 @@ public class Game_chanh extends javax.swing.JFrame {
     public Question cur_ques;
     public String user_ans;
 
-    public InputStream input_data;
+    public Question[] questions;
 
-    public Game_chanh() throws JavaLayerException {
+    public Game_chanh() throws JavaLayerException, IOException {
         time_run = TIME_MAX;
         initComponents();
-        input_data = this.getClass().getResourceAsStream("question.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        InputStream input_data = this.getClass().getResourceAsStream("question.json");
+        questions = objectMapper.readValue(input_data, Question[].class);
 
         changeVisibleAll(false);
-        this.setTitle("Game Đố Vui - Version 1.2");
+        this.setTitle("Game Đố Vui - Version 1.3");
         listImage = new ArrayList();
         for (int i = 0; i < 8; i++) {
             listImage.add("background" + i);
@@ -234,11 +234,8 @@ public class Game_chanh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void readQues() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        Question[] questions = objectMapper.readValue(input_data, Question[].class);
-
         listQues = new ArrayList<>(Arrays.asList(questions));
+
     }
     private void jansAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jansAActionPerformed
         this.user_ans = jansA.getText().replace("A. ", "");
@@ -427,6 +424,7 @@ public class Game_chanh extends javax.swing.JFrame {
             this.jansD.setEnabled(false);
             time.stop();
             jProgressBar1.setValue(0);
+
         } else {
             Random rand = new Random();
             int index_random = rand.nextInt(listQues.size());
@@ -536,6 +534,8 @@ public class Game_chanh extends javax.swing.JFrame {
                 try {
                     new Game_chanh().setVisible(true);
                 } catch (JavaLayerException ex) {
+                    Logger.getLogger(Game_chanh.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(Game_chanh.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

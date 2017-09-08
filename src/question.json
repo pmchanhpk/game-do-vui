@@ -136,6 +136,22 @@
         "trueAns": "Phạm Tuân"
     },
     {
+        "ques": "Trong hệ mặt trời, hành tinh có kích thước lớn hơn trái đất?",
+        "ansA": "Sao Hải Vương",
+        "ansB": "Sao Kim",
+        "ansC": "Sao Hỏa",
+        "ansD": "Sao Thủy",
+        "trueAns": "Sao Hải Vương"
+    },
+    {        
+        "ques": "Nòng nọc xuất hiện trong vòng đời tuần hoàn của con vật nào?",
+        "ansA": "Muỗi",
+        "ansB": "Ếch",
+        "ansC": "Bướm",
+        "ansD": "Ong",
+        "trueAns": "Ếch"
+    },        
+    {
         "ques": "Giải Abel là giải thưởng hàng năm dành cho lĩnh vực nào?",
         "ansA": "Toán học",
         "ansB": "Vật lý",

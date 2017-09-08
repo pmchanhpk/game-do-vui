@@ -37,17 +37,19 @@ public class Game_chanh extends javax.swing.JFrame {
     public List<Question> listQues;
     public List<String> listImage;
     public Question cur_ques;
-
     public String user_ans;
+
+    public InputStream input_data;
 
     public Game_chanh() throws JavaLayerException {
         time_run = TIME_MAX;
         initComponents();
+        input_data = this.getClass().getResourceAsStream("question.json");
 
         changeVisibleAll(false);
         this.setTitle("Game Đố Vui - Version 1.2");
         listImage = new ArrayList();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             listImage.add("background" + i);
         }
 
@@ -233,10 +235,8 @@ public class Game_chanh extends javax.swing.JFrame {
 
     private void readQues() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String cur_path = Paths.get(".").toAbsolutePath().normalize().toString();
-        File file = new File(cur_path + "//src//question.json");
 
-        Question[] questions = objectMapper.readValue(file, Question[].class);
+        Question[] questions = objectMapper.readValue(input_data, Question[].class);
 
         listQues = new ArrayList<>(Arrays.asList(questions));
     }
@@ -411,7 +411,7 @@ public class Game_chanh extends javax.swing.JFrame {
         String cur_image;
 
         Random rd = new Random();
-        int index_image = rd.nextInt(6);
+        int index_image = rd.nextInt(8);
         cur_image = listImage.get(index_image);
         jBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images_chanh/" + cur_image + ".jpg")));
 
